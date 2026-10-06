@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZeroBit Academy – AI & Robotics training for school students</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#161616;--mute:#5d5d5d;--green:#1f9d34;--soft:#eef8f0;--line:#dcdcdc;--on-green:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121512;--fg:#f2f2f2;--mute:#a9b0aa;--green:#3ccf56;--soft:#1a221c;--line:#2e362f;--on-green:#08140b}}
+:root[data-theme="dark"]{--bg:#121512;--fg:#f2f2f2;--mute:#a9b0aa;--green:#3ccf56;--soft:#1a221c;--line:#2e362f;--on-green:#08140b}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:6px 12px;flex-wrap:wrap}
+.logo{font:800 24px "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo b{color:var(--green)}
+nav a{margin-left:20px;text-decoration:none;font-weight:500}
+nav a:hover{color:var(--green)}
+.hero{position:relative;padding:56px 0 72px}
+.hero>*{position:relative;z-index:1}
+.hero>.hero-art{position:absolute;right:0;top:24px;width:min(360px,46%);height:auto;z-index:0}
+.g{fill:var(--green)}.d{fill:var(--fg)}.b{fill:var(--bg)}.sg{stroke:var(--green);fill:none}.sd{stroke:var(--fg);fill:none}
+.scene{position:relative;border-radius:24px;overflow:hidden;background:var(--soft)}
+.scene svg{display:block;width:100%;height:auto}
+.scene .cap{position:absolute;left:30px;top:26px;max-width:290px}
+.scene .cap h2{font-size:34px}
+.scene .cap p{margin:0;color:var(--mute)}
+.hero h1{font-size:clamp(40px,7vw,76px);font-weight:800;max-width:15ch}
+.hero p{max-width:52ch;color:var(--mute);font-size:19px;margin:20px 0 28px}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);padding:13px 26px;border-radius:999px;font-weight:700;text-decoration:none;border:0;font:700 17px "DM Sans",sans-serif;cursor:pointer}
+.btn.alt{background:none;color:var(--fg);border:2px solid var(--fg);margin-left:10px}
+.bits{margin-top:44px;padding:22px;background:var(--soft);border-radius:20px}
+.bits small{display:block;color:var(--mute);margin-bottom:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.bit{width:60px;height:72px;border-radius:12px;border:2px solid var(--fg);background:var(--bg);color:var(--fg);font:800 36px "Bricolage Grotesque",sans-serif;cursor:pointer}
+.bit[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--on-green)}
+.out{margin-left:12px;font:700 24px "Bricolage Grotesque",sans-serif}
+section{padding:64px 0}
+h2{font-size:clamp(30px,4.5vw,46px);font-weight:800;margin-bottom:12px}
+.lead{color:var(--mute);max-width:56ch;margin:0 0 34px}
+.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.course{border:2px solid var(--line);border-radius:16px;padding:24px}
+.course:nth-child(1){border-top:8px solid var(--green)}
+.course:nth-child(2){border-top:8px solid var(--fg)}
+.course:nth-child(3){border-top:8px solid var(--green)}
+.course:nth-child(4){border-top:8px solid var(--fg)}
+.course h3{font-size:24px;margin-bottom:8px}
+.course p{margin:0 0 12px;color:var(--mute)}
+.course ul{margin:0;padding-left:18px}
+.course .lvl{font-weight:700;color:var(--green);margin-top:14px}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.mode{background:var(--soft);border-radius:16px;padding:26px}
+.mode h3{font-size:26px;margin-bottom:8px}
+.mode p{margin:0;color:var(--mute)}
+.contact{background:var(--fg);color:var(--bg);border-radius:24px;padding:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px}
+.contact h2{color:var(--bg)}
+.contact a{color:var(--bg)}
+.contact dt{font-weight:700;margin-top:16px;color:var(--green)}
+.contact dd{margin:0}
+label{display:block;font-weight:500;margin-top:12px}
+input,textarea,select{width:100%;padding:11px 12px;border-radius:10px;border:2px solid var(--line);font:inherit;background:#fff;color:#161616;margin-top:4px}
+footer{padding:30px 0;color:var(--mute);font-size:15px}
+@media (max-width:560px){nav a{margin:0 14px 0 0}.contact{padding:26px}.btn.alt{margin:10px 0 0}}
+@media (max-width:700px){.hero>.hero-art{width:62%;opacity:.16;top:60px}.scene .cap{position:static;padding:24px 24px 0;max-width:none}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px}
+.stat{background:var(--fg);color:var(--bg);border-radius:16px;padding:22px}
+.stat b{display:block;font:800 clamp(34px,5vw,52px)/1 "Bricolage Grotesque",sans-serif;color:var(--green)}
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.work{border:2px solid var(--line);border-radius:16px;overflow:hidden}
+.work img,.work .ph{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.work .ph{background:var(--soft);display:grid;place-items:center;font:800 40px "Bricolage Grotesque",sans-serif;color:var(--green)}
+.work .t{padding:16px}.work h3{font-size:20px}.work p{margin:6px 0 0;color:var(--mute);font-size:15px}
+.tag{display:inline-block;font-size:14px;font-weight:700;background:var(--soft);color:var(--green);padding:2px 10px;border-radius:99px;margin-bottom:6px}
+.btn.sm{padding:9px 18px;font-size:15px}
+.panel{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:40;display:grid;place-items:center;padding:16px}
+.box{background:var(--bg);color:var(--fg);max-width:580px;width:100%;max-height:90vh;overflow:auto;border-radius:18px;padding:24px}
+.box h3{font-size:24px;margin-bottom:6px}.box hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.irow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.chat{position:fixed;right:18px;bottom:calc(80px + env(safe-area-inset-bottom,0px));width:min(370px,calc(100vw - 36px));height:min(520px,66vh);display:flex;flex-direction:column;background:var(--bg);border:2px solid var(--fg);border-radius:18px;z-index:30;overflow:hidden}
+.chat header{position:static;background:var(--fg);color:var(--bg);padding:12px 16px;border:0;font-weight:700;display:flex;justify-content:space-between}
+.msgs{flex:1;overflow:auto;padding:10px 12px}
+.m{max-width:88%;padding:9px 13px;border-radius:14px;margin:6px 0;white-space:pre-wrap;font-size:15.5px;line-height:1.45}
+.m.u{margin-left:auto;background:var(--green);color:var(--on-green)}.m.a{background:var(--soft)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px}
+.chips button{border:1.5px solid var(--green);background:none;color:var(--fg);border-radius:99px;padding:5px 12px;font:500 14px "DM Sans",sans-serif;cursor:pointer}
+.cin{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}.cin input{margin:0}
+.cin button{padding:0 16px;font:700 15px "DM Sans",sans-serif}
+.note{font-size:14px;color:var(--mute)}
+[hidden]{display:none!important}
+.authbox{display:flex;align-items:center;gap:4px;font-weight:700}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="logo" href="#top">ZeroBit <b>Academy</b></a>
+  <nav aria-label="Main"><a href="#courses">Courses</a><a href="#showcase">Our students</a><a href="#learn">How we teach</a><a href="#contact">Contact</a></nav>
+  <span data-dyn id="auth-dyn" class="authbox"></span>
+</header>
+
+<main id="top">
+<div class="hero">
+  <svg class="hero-art" viewBox="0 0 300 330" role="img" aria-label="Illustration of a friendly robot">
+<line class="sd" x1="150" y1="22" x2="150" y2="58" stroke-width="6" stroke-linecap="round"/><circle class="g" cx="150" cy="16" r="11"/>
+<rect class="g" x="60" y="88" width="16" height="42" rx="7"/><rect class="g" x="224" y="88" width="16" height="42" rx="7"/>
+<rect class="d" x="80" y="56" width="140" height="102" rx="28"/>
+<circle class="g" cx="118" cy="103" r="16"/><circle class="b" cx="122" cy="99" r="5"/><circle class="g" cx="182" cy="103" r="16"/><circle class="b" cx="186" cy="99" r="5"/>
+<rect class="g" x="120" y="132" width="60" height="9" rx="4.5"/>
+<rect class="g" x="135" y="158" width="30" height="14"/>
+<rect class="d" x="34" y="188" width="26" height="90" rx="13"/><rect class="d" x="240" y="188" width="26" height="90" rx="13"/>
+<rect class="g" x="70" y="172" width="160" height="122" rx="28"/>
+<rect class="b" x="104" y="198" width="92" height="52" rx="10"/>
+<text x="150" y="234" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="30" class="d">0 1</text>
+<rect class="d" x="88" y="294" width="46" height="28" rx="9"/><rect class="d" x="166" y="294" width="46" height="28" rx="9"/>
+</svg>
+  <h1>Build beyond boundaries.</h1>
+  <p>ZeroBit Academy teaches school students to code, build robots and train AI, with hands-on classes online and in our classroom.</p>
+  <a class="btn" href="#contact">Book a free demo class</a><a class="btn alt" href="#courses">See courses</a>
+  <div class="bits">
+    <small>Try it: tap the bits. Every computer starts from 0 and 1.</small>
+    <div class="row" id="bits"></div>
+  </div>
+</div>
+
+<section id="courses">
+  <h2>Our courses</h2>
+  <p class="lead">Four courses for school students. Start with Python, or jump straight to the one you are curious about.</p>
+  <div class="courses">
+    <article class="course"><h3>Python Programming</h3><p>Learn to code by making games, quizzes and small tools.</p>
+      <ul><li>Variables, loops and functions</li><li>Simple games and projects</li><li>Problem-solving practice</li></ul><div class="lvl">Beginner friendly</div></article>
+    <article class="course"><h3>Arduino, IoT &amp; Embedded</h3><p>Wire real circuits and make them respond to the world.</p>
+      <ul><li>Sensors, LEDs and motors</li><li>Smart devices connected to the internet</li><li>Build a working gadget</li></ul><div class="lvl">Beginner to intermediate</div></article>
+    <article class="course"><h3>Robotics &amp; Automation</h3><p>Design, build and program robots that move and decide.</p>
+      <ul><li>Mechanics and motors</li><li>Line-following and obstacle-avoiding robots</li><li>Automation projects</li></ul><div class="lvl">Beginner to intermediate</div></article>
+    <article class="course"><h3>AI &amp; Machine Learning</h3><p>Understand how machines learn, then teach one yourself.</p>
+      <ul><li>How AI works, in simple words</li><li>Train image and text models</li><li>Build an AI mini project</li></ul><div class="lvl">Intermediate</div></article>
+  </div>
+</section>
+
+<section id="showcase">
+  <h2>Our students' success</h2>
+  <p class="lead">Real projects built by ZeroBit students, and what they have achieved.</p>
+  <div data-dyn id="show-dyn"></div>
+</section>
+
+<section id="workshop" style="padding-top:0">
+  <div class="scene">
+    <div class="cap"><h2>Hands-on from day one</h2><p>Students wire circuits, test sensors and build their own robots in every class.</p></div>
+    <svg viewBox="0 0 900 340" role="img" aria-label="Two students building a circuit on an Arduino board next to a small robot">
+      <path class="sg" d="M20 300 H140 V240 H260 M880 40 H760 V90 H690 M40 330 H200 V290" stroke-width="3" opacity=".3"/>
+      <circle class="g" cx="140" cy="240" r="6" opacity=".4"/><circle class="g" cx="760" cy="90" r="6" opacity=".4"/>
+      <rect x="0" y="262" width="900" height="78" style="fill:var(--line)"/>
+      <rect class="d" x="0" y="256" width="900" height="10"/>
+      <rect class="g" x="386" y="170" width="92" height="96" rx="30"/>
+      <circle cx="432" cy="132" r="35" fill="#c68a5e"/><path d="M397 126a35 35 0 0 1 70 0c-14-14-48-14-70 0z" fill="#2b1d14"/>
+      <path class="sg" d="M468 205 L545 252" stroke-width="20" stroke-linecap="round"/>
+      <rect class="d" x="656" y="176" width="92" height="90" rx="30"/>
+      <circle cx="702" cy="138" r="35" fill="#8d5a3b"/><path d="M667 132a35 35 0 0 1 70 0c-14-16-52-16-70 0z" fill="#161616"/>
+      <path class="sd" d="M668 208 L612 252" stroke-width="20" stroke-linecap="round"/>
+      <rect x="528" y="234" width="104" height="24" rx="5" fill="#0a7a8c"/><rect x="560" y="239" width="30" height="14" rx="2" fill="#222"/>
+      <circle cx="544" cy="226" r="6" fill="#e53935"/><circle cx="574" cy="226" r="6" fill="#fdd835"/><circle cx="604" cy="226" r="6" fill="#43e060"/>
+      <path d="M544 232V234M574 232V234M604 232V234" stroke="#999" stroke-width="2"/>
+      <rect class="d" x="790" y="186" width="50" height="38" rx="10"/><circle class="g" cx="805" cy="204" r="6"/><circle class="g" cx="825" cy="204" r="6"/>
+      <rect class="g" x="786" y="226" width="58" height="30" rx="8"/><circle class="d" cx="800" cy="258" r="9"/><circle class="d" cx="830" cy="258" r="9"/>
+      <line class="sd" x1="815" y1="186" x2="815" y2="170" stroke-width="4"/><circle class="g" cx="815" cy="166" r="6"/>
+    </svg>
+  </div>
+</section>
+
+<section id="learn">
+  <h2>Learn your way</h2>
+  <p class="lead">Every course is available in two formats.</p>
+  <div class="modes">
+    <div class="mode"><h3>In our classroom</h3><p>Build with real kits, tools and robots, with a trainer beside you and classmates to share ideas.</p></div>
+    <div class="mode"><h3>Online, live</h3><p>Join live classes from home and follow along with guided projects. Ask us which kit you need.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <div>
+      <h2>Talk to us</h2>
+      <p>Ask about batches, course details or a free demo class.</p>
+      <dl>
+        <dt>Email</dt><dd><a href="mailto:zerobitacademy@gmail.com">zerobitacademy@gmail.com</a></dd>
+        <dt>Phone / WhatsApp</dt><dd>Add your number here</dd>
+        <dt>Address</dt><dd>Add your centre address here</dd>
+      </dl>
+    </div>
+    <div>
+      <label for="n">Parent or student name</label><input id="n" autocomplete="name">
+      <label for="c">Course</label>
+      <select id="c"><option>Python Programming</option><option>Arduino, IoT &amp; Embedded</option><option>Robotics &amp; Automation</option><option>AI &amp; Machine Learning</option></select>
+      <label for="m">Message</label><textarea id="m" rows="3"></textarea>
+      <p><button class="btn" id="send" type="button">Send enquiry by email</button></p>
+    </div>
+  </div>
+</section>
+</main>
+<div data-dyn id="chat-dyn"></div><div data-dyn id="panel-dyn"></div>
+<!--
+  EDIT YOUR STUDENT SHOWCASE HERE (VS Code version)
+  - stats: type the numbers you want shown, e.g. "500+". Leave "" to hide one.
+  - items: add one block per student work or success story.
+    "type" is "Student work" or "Success story".
+    "photo" is the path of an image saved next to this file, e.g. "images/robot1.jpg".
+  Example (copy inside the [ ] and separate blocks with commas):
+  {"type":"Student work","name":"Aisha, Class 8","title":"Line-following robot","desc":"Built with Arduino in 4 weeks.","photo":"images/robot1.jpg"}
+-->
+<script type="application/json" id="seed">{"stats":{"students":"","projects":"","awards":""},"items":[]}</script>
+<footer>© 2026 ZeroBit Academy. Build beyond boundaries.</footer>
+</div>
+<script>
+(function(){
+  var box=document.getElementById('bits'),bits=[1,0,1,1],out=document.createElement('span');
+  out.className='out';
+  function draw(){
+    box.innerHTML='';
+    bits.forEach(function(v,i){
+      var b=document.createElement('button');
+      b.className='bit';b.textContent=v;b.setAttribute('aria-pressed',v?'true':'false');
+      b.setAttribute('aria-label','Bit '+(i+1)+' is '+v);
+      b.onclick=function(){bits[i]=v?0:1;draw();};
+      box.appendChild(b);
+    });
+    out.textContent='= '+parseInt(bits.join(''),2);
+    box.appendChild(out);
+  }
+  draw();
+  document.getElementById('send').onclick=function(){
+    var n=document.getElementById('n').value,c=document.getElementById('c').value,m=document.getElementById('m').value;
+    location.href='mailto:zerobitacademy@gmail.com?subject='+encodeURIComponent('Enquiry: '+c)+'&body='+encodeURIComponent('Name: '+n+'\nCourse: '+c+'\n\n'+m);
+  };
+})();
+</script>
+<script>
+(function(){
+var S=JSON.parse(document.getElementById('seed').textContent),isOwner=false,artifact=null,sample=null;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
+function $(id){return document.getElementById(id);}
+var LABELS=[['students','Students trained'],['projects','Projects built'],['awards','Awards & achievements']];
+
+function render(){
+  var h=$('show-dyn');h.innerHTML='';
+  var st=S.stats;
+  if(st.students||st.projects||st.awards){
+    var g=el('div','stats');
+    LABELS.forEach(function(p){if(!st[p[0]])return;var d=el('div','stat');d.appendChild(el('b','',st[p[0]]));d.appendChild(el('span','',p[1]));g.appendChild(d);});
+    h.appendChild(g);
+  }
+  if(S.items.length){
+    var w=el('div','works');
+    S.items.forEach(function(it){
+      var c=el('article','work');
+      if(it.photo){var im=el('img');im.src=it.photo;im.alt=it.title+(it.name?' by '+it.name:'');im.loading='lazy';c.appendChild(im);}
+      else c.appendChild(el('div','ph','0 1'));
+      var t=el('div','t');t.appendChild(el('span','tag',it.type));t.appendChild(el('h3','',it.title));
+      if(it.name)t.appendChild(el('p','',it.name));
+      if(it.desc)t.appendChild(el('p','',it.desc));
+      c.appendChild(t);w.appendChild(c);
+    });
+    h.appendChild(w);
+  }else if(!isOwner){h.appendChild(el('p','lead','Student projects and success stories will appear here soon.'));}
+  if(isOwner){
+    if(!S.items.length)h.appendChild(el('p','lead','Your showcase is empty. Add student numbers, photos and projects.'));
+    var b=el('button','btn sm','Edit showcase');b.type='button';b.style.marginTop='20px';b.onclick=openEditor;h.appendChild(b);
+  }
+}
+
+function compress(file){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.72));};im.onerror=rej;im.src=r.result;};r.onerror=rej;r.readAsDataURL(file);});}
+
+function field(box,label,tag,id,ph){var l=el('label','',label);l.htmlFor=id;box.appendChild(l);var f=el(tag);f.id=id;if(ph)f.placeholder=ph;box.appendChild(f);return f;}
+
+function openEditor(){
+  var D=JSON.parse(JSON.stringify(S)),P=$('panel-dyn');P.innerHTML='';
+  var ov=el('div','panel'),box=el('div','box');ov.appendChild(box);P.appendChild(ov);
+  function draw(){
+    box.innerHTML='';
+    box.appendChild(el('h3','','Edit student showcase'));
+    box.appendChild(el('p','note','Type your numbers as you want them shown, for example 500+.'));
+    LABELS.forEach(function(p){var f=field(box,p[1],'input','e_'+p[0]);f.value=D.stats[p[0]]||'';f.oninput=function(){D.stats[p[0]]=f.value.trim();};});
+    box.appendChild(el('hr'));
+    box.appendChild(el('strong','','Added so far ('+D.items.length+')'));
+    D.items.forEach(function(it,i){var r=el('div','irow');r.appendChild(el('span','',it.title+(it.name?' – '+it.name:'')));var x=el('button','btn alt sm','Delete');x.type='button';x.style.margin='0';x.onclick=function(){D.items.splice(i,1);draw();};r.appendChild(x);box.appendChild(r);});
+    box.appendChild(el('hr'));
+    box.appendChild(el('strong','','Add a student work or success story'));
+    var ty=field(box,'Type','select','n_type');['Student work','Success story'].forEach(function(o){var op=el('option','',o);ty.appendChild(op);});
+    var nm=field(box,'Student name','input','n_name'),ti=field(box,'Title (for example: Line-following robot)','input','n_title'),ds=field(box,'Short description','textarea','n_desc');ds.rows=2;
+    var ph=field(box,'Photo','input','n_photo');ph.type='file';ph.accept='image/*';
+    var msg=el('p','note','');
+    var add=el('button','btn sm','Add to list');add.type='button';add.style.marginTop='12px';
+    add.onclick=async function(){
+      if(!ti.value.trim()){msg.textContent='Please enter a title.';return;}
+      if(D.items.length>=12){msg.textContent='You can add up to 12 items.';return;}
+      var photo='';
+      if(ph.files[0]){try{photo=await compress(ph.files[0]);}catch(e){msg.textContent='That photo could not be read. Try a JPG or PNG.';return;}}
+      D.items.push({type:ty.value,name:nm.value.trim(),title:ti.value.trim(),desc:ds.value.trim(),photo:photo});draw();
+    };
+    box.appendChild(add);box.appendChild(msg);box.appendChild(el('hr'));
+    var out=el('p','note','');
+    var sv=el('button','btn','Save and publish');sv.type='button';
+    sv.onclick=async function(){
+      if(!artifact){out.textContent='Saving is not available here. Open the page from your own Claude account to edit.';return;}
+      S=D;render();out.textContent='Publishing...';
+      var c=document.documentElement.cloneNode(true);
+      c.querySelectorAll('[data-dyn]').forEach(function(n){n.innerHTML='';});
+      c.querySelector('#seed').textContent=JSON.stringify(S).replace(/</g,'\\u003c');
+      try{await artifact.publish('<!DOCTYPE html>\n'+c.outerHTML);}
+      catch(e){out.textContent=(e&&e.code==='conflict')?'The page was updated elsewhere. Reload and try again.':'Could not publish: '+((e&&e.message)||'unknown error');}
+    };
+    var cn=el('button','btn alt','Cancel');cn.type='button';cn.onclick=function(){P.innerHTML='';};
+    box.appendChild(sv);box.appendChild(cn);box.appendChild(out);
+  }
+  draw();
+}
+
+/* ---------- Chat assistant ---------- */
+var FAQ=[
+ [/course|learn|teach|syllabus|subject/,'We teach four courses for school students: Python Programming, Arduino, IoT & Embedded, Robotics & Automation, and AI & Machine Learning. Python is a great first step.'],
+ [/python/,'Python Programming is beginner friendly. Students make games, quizzes and small tools while learning loops, functions and problem solving.'],
+ [/arduino|iot|embedded|sensor/,'In Arduino, IoT & Embedded, students wire real circuits with sensors, LEDs and motors, then build a working gadget.'],
+ [/robot|automation/,'In Robotics & Automation, students build and program robots, including line-following and obstacle-avoiding robots.'],
+ [/\bai\b|machine|artificial/,'In AI & Machine Learning, students learn how AI works in simple words, train image and text models, and build an AI mini project.'],
+ [/online|offline|class ?room|mode|home/,'Every course runs both in our classroom with real kits and live online from home.'],
+ [/age|class|grade|school|kid|child/,'Our classes are made for school students, and beginners are welcome.'],
+ [/fee|price|cost|batch|timing|schedule|duration/,'Fees, batch timings and course duration are shared by our team. Please email zerobitacademy@gmail.com and we will reply with details.'],
+ [/demo|trial|free|join|enrol|admission|register/,'You can book a free demo class. Use the enquiry form in the Contact section or email zerobitacademy@gmail.com.'],
+ [/contact|email|mail|phone|call|address|where|location/,'You can reach us at zerobitacademy@gmail.com or use the enquiry form in the Contact section.']
+];
+function faq(q){q=q.toLowerCase();for(var i=0;i<FAQ.length;i++)if(FAQ[i][0].test(q))return FAQ[i][1];return 'I can help with our courses, online and classroom classes, and booking a free demo. For anything else, please email zerobitacademy@gmail.com.';}
+function sys(){var st=S.stats,x='';LABELS.forEach(function(p){if(st[p[0]])x+=' '+p[1]+': '+st[p[0]]+'.';});
+ return 'You are the friendly assistant on the website of ZeroBit Academy, an AI and robotics training institute for school students. Courses: Python Programming; Arduino, IoT & Embedded; Robotics & Automation; AI & Machine Learning. Classes run in the classroom and live online. A free demo class can be booked through the Contact form. Contact email: zerobitacademy@gmail.com.'+x+' Fees, batch timings, phone and address are not on the website: say the team will share them by email and never invent them. Reply in 1 to 4 short sentences, in the language the visitor writes in. Only talk about the academy.'+(me?' The visitor is signed in as '+me.name+'.':'');}
+
+function initChat(){
+  var H=$('chat-dyn');H.innerHTML='';
+  var fab=el('button','btn fab','Chat with us');fab.type='button';fab.setAttribute('aria-expanded','false');
+  var win=el('div','chat');win.hidden=true;win.setAttribute('role','dialog');win.setAttribute('aria-label','ZeroBit assistant');
+  var hd=el('header');hd.appendChild(el('span','','ZeroBit assistant'));
+  var cl=el('button','','Close');cl.type='button';cl.style.cssText='background:none;border:0;color:inherit;cursor:pointer;font:inherit';hd.appendChild(cl);
+  var ms=el('div','msgs');ms.setAttribute('aria-live','polite');
+  var chips=el('div','chips');
+  var row=el('div','cin'),inp=el('input');inp.placeholder='Ask about courses or demo class';inp.setAttribute('aria-label','Your message');
+  var go=el('button','btn','Send');go.type='button';row.appendChild(inp);row.appendChild(go);
+  win.appendChild(hd);win.appendChild(ms);win.appendChild(chips);win.appendChild(row);H.appendChild(win);H.appendChild(fab);
+  var hist=[],busy=false;
+  function say(t,c){var m=el('div','m '+c,t);ms.appendChild(m);ms.scrollTop=ms.scrollHeight;return m;}
+  say('Hi! I can answer questions about our courses, classes and free demo.','a');
+  ['What courses do you offer?','Online or classroom?','Book a free demo','Fees and timings'].forEach(function(q){var b=el('button','',q);b.type='button';b.onclick=function(){send(q);};chips.appendChild(b);});
+  async function send(q){
+    q=(q||inp.value).trim();if(!q||busy)return;inp.value='';chips.hidden=true;say(q,'u');busy=true;
+    var m=say('...','a');
+    if(sample){
+      var turns=hist.concat([{role:'user',content:q}]);
+      if(!hist.length)turns[0].content=sys()+'\n\nVisitor: '+q;
+      try{
+        var r=await sample(turns,{cache:false,modelTier:'quick',onText:function(o){m.textContent=o.text;ms.scrollTop=ms.scrollHeight;}});
+        m.textContent=r.text;hist=turns.concat([{role:'assistant',content:r.text}]);
+      }catch(e){m.textContent=faq(q);if(e&&e.code==='not_granted')sample=null;}
+    }else m.textContent=faq(q);
+    busy=false;
+  }
+  go.onclick=function(){send();};inp.onkeydown=function(e){if(e.key==='Enter')send();};win.onkeydown=function(e){if(e.key==='Escape')cl.onclick();};
+  fab.onclick=function(){win.hidden=!win.hidden;fab.setAttribute('aria-expanded',String(!win.hidden));if(!win.hidden)inp.focus();};
+  cl.onclick=function(){win.hidden=true;fab.setAttribute('aria-expanded','false');fab.focus();};
+}
+
+/* ---------- Sign in (accounts saved in this browser only) ---------- */
+var store={get:function(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}};
+var me=store.get('zb_session');
+async function hash(e,p){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(e+':'+p));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
+function prefill(){var n=$('n');if(n&&me&&!n.value)n.value=me.name;}
+function drawAuth(){
+  var h=$('auth-dyn');h.innerHTML='';
+  if(me){
+    h.appendChild(el('span','','Hi, '+me.name.split(' ')[0]));
+    var o=el('button','btn alt sm','Sign out');o.type='button';o.onclick=function(){me=null;store.set('zb_session',null);drawAuth();};h.appendChild(o);
+  }else{var b=el('button','btn sm','Sign in');b.type='button';b.onclick=openAuth;h.appendChild(b);}
+}
+function openAuth(){
+  var P=$('panel-dyn');P.innerHTML='';
+  var ov=el('div','panel'),box=el('div','box'),mode='in';ov.appendChild(box);P.appendChild(ov);
+  ov.onclick=function(e){if(e.target===ov)P.innerHTML='';};
+  function draw(){
+    box.innerHTML='';var f={};
+    box.appendChild(el('h3','',mode==='in'?'Sign in':'Create account'));
+    if(mode==='up')f.name=field(box,'Full name','input','a_name');
+    f.email=field(box,'Email','input','a_email');f.email.type='email';
+    f.pass=field(box,'Password (6 or more characters)','input','a_pass');f.pass.type='password';
+    var msg=el('p','note','Accounts are saved in this browser only.');
+    var go=el('button','btn',mode==='in'?'Sign in':'Create account');go.type='button';go.style.marginTop='14px';
+    go.onclick=async function(){
+      var em=f.email.value.trim().toLowerCase(),pw=f.pass.value;
+      if(!/^\S+@\S+\.\S+$/.test(em)||pw.length<6||(mode==='up'&&!f.name.value.trim())){msg.textContent='Please fill every field. The password needs 6 or more characters.';return;}
+      if(!window.crypto||!crypto.subtle){msg.textContent='Sign in needs a secure (https) page.';return;}
+      var users=store.get('zb_users')||{},h=await hash(em,pw);
+      if(mode==='up'){
+        if(users[em]){msg.textContent='This email already has an account. Use Sign in.';return;}
+        users[em]={name:f.name.value.trim(),h:h};
+        if(!store.set('zb_users',users)){msg.textContent='Your browser blocked saving. Turn off private browsing and try again.';return;}
+      }else if(!users[em]||users[em].h!==h){msg.textContent='Email or password is not correct.';return;}
+      me={name:users[em].name,email:em};store.set('zb_session',me);P.innerHTML='';drawAuth();prefill();
+    };
+    var sw=el('button','btn alt',mode==='in'?'New here? Create account':'Have an account? Sign in');sw.type='button';sw.onclick=function(){mode=mode==='in'?'up':'in';draw();};
+    var cx=el('button','btn alt','Cancel');cx.type='button';cx.onclick=function(){P.innerHTML='';};
+    box.appendChild(go);box.appendChild(sw);box.appendChild(cx);box.appendChild(msg);
+  }
+  draw();
+}
+
+render();initChat();drawAuth();prefill();
+if(window.claude){
+  claude.use('user').then(function(u){if(u&&(u.isOwner()||u.canEdit())){isOwner=true;render();}}).catch(function(){});
+  claude.use('artifact').then(function(a){artifact=a;}).catch(function(){});
+  claude.use('sample').then(function(a){sample=a;}).catch(function(){});
+}
+})();
+</script>
+</body>
+</html>
